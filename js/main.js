@@ -1,6 +1,8 @@
 // Inizializzo e assegno le variabili per la scelta dell'utente e per inserire elementi nel DOM
 const userChoice = document.getElementById(`game-option`);
 const gridElement = document.getElementById(`grid`); 
+let outputPoints = document.getElementById(`points`);
+let points = 0;
 
 let numberGrids = 0;
 
@@ -39,17 +41,19 @@ function createGame (){
         if (!bombs.includes(i)) {
             createGrid.addEventListener(`click`, function(){
                 createGrid = createNewBox (i);
+                points++;
+                outputPoints.innerHTML=`Il tuo punteggio è ${points}`;
+                console.log(points)
             })
         } else {
             createGrid.addEventListener(`click`, function(){
                 createGrid.classList.add(`box-red`);
+                outputPoints.innerHTML=`Mi dispiace hai perso, il tuo punteggio è ${points}`;
             })
         }
             
         gridElement.appendChild(createGrid);
-
         }
-
     } 
 
 
@@ -68,7 +72,7 @@ function createNewBox (number){
 
     // Aggiungo la funzione di click per attivare e disattivare la classe box-blue
     newDiv.addEventListener(`click`, function(){
-        newDiv.classList.toggle(`box-blue`)
+        newDiv.classList.add(`box-blue`)
     })
     return newDiv;
 } 
