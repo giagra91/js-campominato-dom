@@ -1,0 +1,61 @@
+body{
+    font-family: "Montserrat", sans-serif;
+}
+header{
+    height: 10vh;
+}
+
+header h3{
+    vertical-align: middle;
+}
+
+div#main-container{
+    height: 82vh;
+    background-color: rgb(127, 255, 212);
+}
+
+div#grid{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+div.box{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.box-1{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.box-2{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-blue{
+    background-color: rgb(100, 149, 237) ;
+    color: white;
+}
+
+#logo{
+    width: 9%;
+}
