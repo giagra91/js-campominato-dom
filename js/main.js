@@ -9,6 +9,7 @@ let numberGrids = 0;
 // Aggiungo la funzione di click per stampare nel DOM gli elementi in base alla scelta dell'utente
 document.getElementById(`play`).addEventListener(`click`, function(){
     document.getElementById(`play`).classList.add(`d-none`);
+    outputPoints.innerHTML=``;
     createGame();
 })
 
@@ -55,12 +56,12 @@ function createGame (){
         }
     } 
 
-
-
+// Creo una funzione per creare un nuovo div
 function createNewBox (number){
     let newDiv = document.createElement(`div`);
     newDiv.innerHTML= number;
 
+    // ciclo per assegnare la classe al div in base alla scelta dell'utente
     if (userChoice.value == `easy`){
         newDiv.classList.add(`box`);
     } else if (userChoice.value == `medium`){
