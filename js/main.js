@@ -43,12 +43,15 @@ function createGame (){
                 createGrid = createNewBox (i);
                 points++;
                 outputPoints.innerHTML=`Il tuo punteggio è ${points}`;
-                console.log(points)
+                console.log(points);
+                checkPoints = false;
             })
         } else {
             createGrid.addEventListener(`click`, function(){
                 createGrid.classList.add(`box-red`);
                 outputPoints.innerHTML=`Mi dispiace hai perso, il tuo punteggio è ${points}`;
+                createGrid.setAttribute('disabled', 'disabled');
+                checkPoints = true;
             })
         }
             
