@@ -63,11 +63,11 @@ function createNewBox (number){
 
     // ciclo per assegnare la classe al div in base alla scelta dell'utente
     if (userChoice.value == `easy`){
-        newDiv.classList.add(`box`);
+        newDiv.classList.add(`box`, `box-tenth`);
     } else if (userChoice.value == `medium`){
-        newDiv.classList.add( `box`, `box-1`);
+        newDiv.classList.add( `box`, `box-nineth`);
     } else if (userChoice.value == `hard`){
-        newDiv.classList.add(`box`, `box-2`);
+        newDiv.classList.add(`box`, `box-seventh`);
     }
 
     // Aggiungo la funzione di click per attivare e disattivare la classe box-blue

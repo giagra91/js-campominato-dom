@@ -25,21 +25,25 @@ div#grid{
 }
 
 div.box{
-    width: calc(100% / 10);
-    height: calc(100% / 10);
     border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-div.box-1{
+div.box-tenth{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+
+}
+
+div.box-nineth{
     width: calc(100% / 9);
     height: calc(100% / 9);
 
 }
 
-div.box-2{
+div.box-seventh{
     width: calc(100% / 7);
     height: calc(100% / 7);
 
