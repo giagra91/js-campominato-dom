@@ -9,16 +9,15 @@ let numberGrids = 0;
 // Aggiungo la funzione di click per stampare nel DOM gli elementi in base alla scelta dell'utente
 document.getElementById(`play`).addEventListener(`click`, function(){
     document.getElementById(`play`).classList.add(`d-none`);
-
     createGame();
-
 })
 
 // Aggiungo la funzione di click per resettare tutto il contenuto
 document.getElementById(`reset`).addEventListener(`click`, function(){
     gridElement.innerHTML=``;
+    points = 0;
+    outputPoints.innerHTML=``;
     document.getElementById(`play`).classList.remove(`d-none`)
-
 })
 
 function createGame (){
