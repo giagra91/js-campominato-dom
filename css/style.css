@@ -36,19 +36,18 @@ div.box{
 div.box-1{
     width: calc(100% / 9);
     height: calc(100% / 9);
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 div.box-2{
     width: calc(100% / 7);
     height: calc(100% / 7);
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+}
+
+div.box-red{
+    background-color: red;
+    color: white;
 }
 
 .box-blue{

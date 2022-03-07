@@ -30,12 +30,28 @@ function createGame (){
         numberGrids = 49;
     }
 
-    for (i = 1 ; i < numberGrids + 1 ; i++){
-        const createGrid = createNewBox (i);
+    const bombs = generateBombNumber(16, numberGrids);
+    console.log(bombs)
+
+    for (i = 1 ; i <= numberGrids ; i++){
+        let createGrid = createNewBox (i);
+
+        if (!bombs.includes(i)) {
+            createGrid.addEventListener(`click`, function(){
+                createGrid = createNewBox (i);
+            })
+        } else {
+            createGrid.addEventListener(`click`, function(){
+                createGrid.classList.add(`box-red`);
+            })
+        }
+            
         gridElement.appendChild(createGrid);
+
+        }
+
     } 
 
-}
 
 
 function createNewBox (number){
@@ -43,21 +59,47 @@ function createNewBox (number){
     newDiv.innerHTML= number;
 
     if (userChoice.value == `easy`){
-        numberGrids = 100;
         newDiv.classList.add(`box`);
     } else if (userChoice.value == `medium`){
-        numberGrids = 81;
-        newDiv.classList.add(`box-1`);
+        newDiv.classList.add( `box`, `box-1`);
     } else if (userChoice.value == `hard`){
-        numberGrids = 49;
-        newDiv.classList.add(`box-2`);
+        newDiv.classList.add(`box`, `box-2`);
     }
 
     // Aggiungo la funzione di click per attivare e disattivare la classe box-blue
     newDiv.addEventListener(`click`, function(){
         newDiv.classList.toggle(`box-blue`)
     })
-
     return newDiv;
-
 } 
+
+// Funzione per creare le bombe in base alla scelta dell'utente
+function generateBombNumber(bombs, gridsNumber) {
+    const BombNumber = [];
+    for (i = 0; i < bombs; i++){
+        BombNumber.push(generateUniqueRandomNumber(BombNumber, 1, gridsNumber));
+    }
+    return BombNumber;
+}
+
+function generateUniqueRandomNumber( numsBlacklist, minimumValue, maximumValue){
+    // mi creo una variabile inizializzata a false, che mi controlla se ho generato un numero
+    // valido oppure no
+    let check = false;
+    let randomInt;
+
+    // creo un ciclo che continua finché non ho trovato un numero valido (assente in blacklist)
+    while ( !check ){
+        //  genero randomicamente un numero intero tra il min e il max passati come argomenti
+        randomInt  = ( Math.floor(Math.random() * ((maximumValue + 1) - minimumValue) + minimumValue));;
+        // se il numero non è presente nella blacklist allora
+        if ( !numsBlacklist.includes(randomInt)  ){
+            // informo il resto della funzione che il numero è stato trovato ed è valido
+            // ==> esco dal ciclo while
+            check = true;
+        }
+    }
+
+    // restituisco il numero valido che ho trovato
+    return randomInt;
+}
