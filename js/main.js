@@ -18,12 +18,14 @@ document.getElementById(`reset`).addEventListener(`click`, function(){
     gridElement.innerHTML=``;
     points = 0;
     outputPoints.innerHTML=``;
-    document.getElementById(`play`).classList.remove(`d-none`)
+    document.getElementById(`play`).classList.remove(`d-none`);
 })
 
+// Funzione per far iniziare il gioco
 function createGame (){
     userChoice.value;
 
+    // Condizione per verificare quanti div inserire nel DOM
     if (userChoice.value == `easy`){
         numberGrids = 100;
     } else if (userChoice.value == `medium`){
@@ -32,31 +34,32 @@ function createGame (){
         numberGrids = 49;
     }
 
+    // Richiamo funzione per generare le bombe
     const bombs = generateBombNumber(16, numberGrids);
-    console.log(bombs)
+    console.log(bombs);
 
+    // Ciclo for per creare i div da inserire nel DOM
     for (i = 1 ; i <= numberGrids ; i++){
         let createGrid = createNewBox (i);
 
+        // Condizione per aggiungere al click la classe red alle bombe
         if (!bombs.includes(i)) {
             createGrid.addEventListener(`click`, function(){
                 createGrid = createNewBox (i);
                 points++;
                 outputPoints.innerHTML=`Il tuo punteggio è ${points}`;
-                console.log(points);
-                checkPoints = false;
             })
         } else {
             createGrid.addEventListener(`click`, function(){
                 createGrid.classList.add(`box-red`);
                 outputPoints.innerHTML=`Mi dispiace hai perso, il tuo punteggio è ${points}`;
                 createGrid.setAttribute('disabled', 'disabled');
-                checkPoints = true;
             })
         }
-            
+                    
         gridElement.appendChild(createGrid);
         }
+
     } 
 
 // Creo una funzione per creare un nuovo div
@@ -73,9 +76,9 @@ function createNewBox (number){
         newDiv.classList.add(`box`, `box-seventh`);
     }
 
-    // Aggiungo la funzione di click per attivare e disattivare la classe box-blue
+    // Aggiungo la funzione di click per aggiungere la classe box-blue
     newDiv.addEventListener(`click`, function(){
-        newDiv.classList.add(`box-blue`)
+        newDiv.classList.add(`box-blue`);
     })
     return newDiv;
 } 
@@ -89,6 +92,7 @@ function generateBombNumber(bombs, gridsNumber) {
     return BombNumber;
 }
 
+// Funzione per generare un numero randomico compreso tra due valori, che non sia già incluso in un array
 function generateUniqueRandomNumber( numsBlacklist, minimumValue, maximumValue){
     // mi creo una variabile inizializzata a false, che mi controlla se ho generato un numero
     // valido oppure no
@@ -98,7 +102,7 @@ function generateUniqueRandomNumber( numsBlacklist, minimumValue, maximumValue){
     // creo un ciclo che continua finché non ho trovato un numero valido (assente in blacklist)
     while ( !check ){
         //  genero randomicamente un numero intero tra il min e il max passati come argomenti
-        randomInt  = ( Math.floor(Math.random() * ((maximumValue + 1) - minimumValue) + minimumValue));;
+        randomInt  = ( Math.floor(Math.random() * ((maximumValue + 1) - minimumValue) + minimumValue));
         // se il numero non è presente nella blacklist allora
         if ( !numsBlacklist.includes(randomInt)  ){
             // informo il resto della funzione che il numero è stato trovato ed è valido
